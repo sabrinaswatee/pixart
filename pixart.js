@@ -46,11 +46,13 @@ $button2.on('click', function() {
     data: { t: $input2.val(), apiKey: '2f6435d9'}
   };
 
+
   $.ajax(settings).done(function(response) {
     var movie = response.Poster;
+    console.log(movie);
     $body.hover(function(event) {
       if (event.target.className == 'square') {
-        event.target.style.backgroundImage = 'url(movie)';
+        event.target.style.backgroundImage = 'url(' + movie + ')';
       };
     });
   });
