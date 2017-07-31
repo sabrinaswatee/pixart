@@ -1,12 +1,14 @@
-var $input = $('#color-field');
-var $button = $('#set-color');
+var $input1 = $('#color-field');
+var $input2 = $('#movie-name');
+var $button1 = $('#set-color');
+var $button2 = $('#set-movie');
 var $brush = $('.brush');
 var $body = $('body');
 
 // commit 1 and 2
-$button.on('click', function(event) {
+$button1.on('click', function(event) {
   event.preventDefault();
-  $brush.css({ 'background-color': $input.val() });
+  $brush.css({ 'background-color': $input1.val() });
 });
 
 // commit 3
@@ -26,15 +28,30 @@ $body.on('click', function(event) {
 // commit 5
 $body.on('click', function(event) {
   if (event.target.className == 'square') {
-    event.target.style.backgroundColor = $input.val();
+    event.target.style.backgroundColor = $input1.val();
   };
 });
 
 // commit 6
 $body.hover(function(event) {
   if (event.target.className == 'square') {
-    event.target.style.backgroundColor = $input.val();
+    event.target.style.backgroundColor = $input1.val();
   };
 });
 
 // commit 7
+$button2.on('click', function() {
+  var settings = {
+    url: 'http://omdbapi.com/',
+    data: { t: $input2.val(), apiKey: '2f6435d9'}
+  };
+
+  $.ajax(settings).done(function(response) {
+    var movie = response.Poster;
+    $body.hover(function(event) {
+      if (event.target.className == 'square') {
+        event.target.style.backgroundImage = 'url(movie)';
+      };
+    });
+  });
+});
