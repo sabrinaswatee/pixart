@@ -16,16 +16,25 @@ for (var i = 0; i < 20; i++) {
   $body.append(newItem);
 };
 
-//commit 4
+// commit 4
 $body.on('click', function(event) {
   if (event.target.className == 'square') {
     event.target.style.backgroundColor = 'green';
   };
 });
 
-//commit 5
+// commit 5
 $body.on('click', function(event) {
   if (event.target.className == 'square') {
     event.target.style.backgroundColor = $input.val();
   };
 });
+
+// commit 6
+$body.hover(function(event) {
+  if (event.target.className == 'square') {
+    event.target.style.backgroundColor = $input.val();
+  };
+});
+
+// commit 7
